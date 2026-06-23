@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.schemas.assessment import MedicalAssessmentResponse
 from app.services import assessment_service, symptom_service
+from app.services import assessment_notification_service
 from app.core.access_control import role_required
 
 router = APIRouter(prefix="/assessment", tags=["Medical Assessment"])
@@ -22,6 +23,9 @@ def get_my_assessment(
         symptoms=record["symptoms"], 
         history=record["medical_history_details"]
     )
+    
+    # Trigger notification for the result
+    assessment_notification_service.notify_assessment_result(db, current_user.id)
     
     return {
         "user_id": current_user.id,
