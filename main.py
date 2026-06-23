@@ -10,6 +10,7 @@ from app.api.drug_routes import router as drug_router
 from app.api.interaction_routes import router as interaction_router
 from app.api.reminder_routes import router as reminder_router
 from app.api.notification_routes import router as notification_router
+from app.api.statistics_routes import router as statistics_router
 from app.core.database import engine, Base
 
 # Create database tables
@@ -28,6 +29,7 @@ app.include_router(drug_router)
 app.include_router(interaction_router)
 app.include_router(reminder_router)
 app.include_router(notification_router)
+app.include_router(statistics_router)
 
 @app.get("/")
 def root():
