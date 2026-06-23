@@ -6,6 +6,7 @@ from app.api.symptom_routes import router as symptom_router
 from app.api.assessment_routes import router as assessment_router
 from app.api.prescription_routes import router as prescription_router
 from app.api.prescription_history_routes import router as prescription_history_router
+from app.api.drug_routes import router as drug_router
 from app.core.database import engine, Base
 
 # Create database tables
@@ -20,6 +21,7 @@ app.include_router(symptom_router)
 app.include_router(assessment_router)
 app.include_router(prescription_router)
 app.include_router(prescription_history_router)
+app.include_router(drug_router)
 
 @app.get("/")
 def root():
