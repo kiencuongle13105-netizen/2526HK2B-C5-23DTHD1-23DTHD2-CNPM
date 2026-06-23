@@ -3,6 +3,7 @@ from app.api.user_routes import router as user_router
 from app.api.auth_routes import router as auth_router
 from app.api.patient_routes import router as patient_router
 from app.api.symptom_routes import router as symptom_router
+from app.api.assessment_routes import router as assessment_router
 from app.core.database import engine, Base
 
 # Create database tables
@@ -14,6 +15,7 @@ app.include_router(user_router)
 app.include_router(auth_router)
 app.include_router(patient_router)
 app.include_router(symptom_router)
+app.include_router(assessment_router)
 
 @app.get("/")
 def root():
